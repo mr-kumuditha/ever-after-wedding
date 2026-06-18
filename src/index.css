@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+  .font-script { font-family: 'Great Vibes', cursive; }
+}
+
+@layer components {
+  .gold-text {
+    background: linear-gradient(135deg, #d4af37, #f5e07a, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl;
+  }
+  .glass-card-dark {
+    @apply backdrop-blur-md bg-black/20 border border-white/10 rounded-2xl;
+  }
+  .gold-btn {
+    @apply px-8 py-3 border border-gold-500 text-gold-500 rounded-full
+           hover:bg-gold-500 hover:text-white transition-all duration-300
+           font-sans font-medium tracking-widest text-sm uppercase cursor-pointer;
+  }
+  .gold-btn-solid {
+    @apply px-8 py-3 bg-gold-gradient text-obsidian rounded-full
+           font-sans font-semibold tracking-widest text-sm uppercase
+           hover:shadow-lg hover:shadow-gold-500/30 transition-all duration-300 cursor-pointer;
+  }
+  .section-padding {
+    @apply py-20 px-4 md:px-8 lg:px-16;
+  }
+  .section-title {
+    @apply font-display text-4xl md:text-5xl text-center mb-4;
+  }
+  .gold-divider {
+    @apply flex items-center justify-center gap-4 my-6;
+  }
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply h-px w-24 bg-gold-gradient;
+  }
+}
+
+/* Floating petals animation */
+@keyframes petal-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+.petal {
+  position: absolute;
+  animation: petal-fall linear infinite;
+  pointer-events: none;
+}
+
+/* Shimmer effect */
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #f5e07a; }
